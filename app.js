@@ -12,14 +12,14 @@ app.get('/', function (req, res) {
 });
 
 
+app.get('/user', function (req, res) {
+    res.sendFile(__dirname + '/pages/dashboard-user.html');
+});
 app.get('/user/dashboard', function (req, res) {
     res.sendFile(__dirname + '/pages/dashboard-user.html');
 });
 app.get('/user/requests', function (req, res) {
     res.sendFile(__dirname + '/pages/requests-user.html');
-});
-app.get('/user', function (req, res) {
-    res.sendFile(__dirname + '/pages/dashboard-user.html');
 });
 
 app.get('/manager/dashboard', function (req, res) {
