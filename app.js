@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express();
 
+var port = process.env.PORT || 3000;
+
 app.set("view options", { layout: false });
 app.use("/assets", express.static(__dirname + '/assets'));
 
@@ -20,7 +22,7 @@ app.get('/manager', function (req, res) {
 });
 
 
-app.listen('3000', (err) => {
+app.listen(port, (err) => {
     if (err) {
         console.error(err);
         process.exit(-1);
