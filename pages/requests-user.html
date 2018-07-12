@@ -139,7 +139,7 @@
               <div class="card">
                 <div class="card-header card-header-primary">
                   <h4 class="card-title ">Access Requests</h4>
-                  <p class="card-category"> Access Requests from Line Employees</p>
+                  <p class="card-category"> Access Requests for Applications</p>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
@@ -367,6 +367,105 @@
 
       <!-- Modal-->
 
+      <!-- View Modal -->
+      <div class="modal fade" id="RequestModify" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <!--<h5 class="modal-title" id="RequestAccessLongTitle">Request Access</h5>-->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="card">
+                  <div class="card-header card-header-primary">
+                    <h4 class="card-title">Request Access</h4>
+                    <p class="card-category">Request Access to HR Application</p>
+                  </div>
+                  <div class="card-body">
+                    <form>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Department</label>
+                            <input type="text" class="form-control" disabled value="Maintanance">
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">User ID</label>
+                            <input type="text" class="form-control" disabled value="tratlk">
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Application</label>
+                            <input type="text" class="form-control" disabled value="HR">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Manager</label>
+                            <input type="text" class="form-control" disabled value="Bruce Wayne">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">App Role</label>
+                            <select class="form-control" id="cmbAppRole">
+                              <option>Normal</option>
+                              <option>Administrator</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Access Type</label>
+                            <select class="form-control" id="cmbAppRole">
+                              <option>Read-Only</option>
+                              <option>Full Access</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Request Date</label>
+                              <input type="date" id="dtRequestDate" class="form-control" value="2018-07-15">
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Expire Date</label>
+                              <input type="date" id="dtExpireDate" class="form-control" value="2018-07-25">
+                            </div>
+                          </div>
+                        </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Reason</label>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Request Access</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
       <!-- Approve Modal -->
 
@@ -401,7 +500,7 @@
 
       <!-- Reject Modal -->
 
-      <div class="modal fade" id="RequestReject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal fade" id="RequestCancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -412,11 +511,11 @@
             <div class="modal-body">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">Reject Request</h4>
+                  <h4 class="card-title">Cancel Request</h4>
                 </div>
                 <div class="card-body">
 
-                  <p class="card-category">Are you sure you want to reject?</p>
+                  <p class="card-category">Are you sure you want to cancel?</p>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-primary">Reject</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
