@@ -4,6 +4,11 @@ const app = express();
 app.set("view options", { layout: false });
 app.use("/assets", express.static(__dirname + '/assets'));
 
+
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/pages/dashboard-manager.html');
+});
+
 app.get('/manager/dashboard', function (req, res) {
     res.sendFile(__dirname + '/pages/dashboard-manager.html');
 });
