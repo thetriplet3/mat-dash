@@ -166,13 +166,13 @@
                           <td>Full Access</td>
                           <td>To do HR Stuff</td>
                           <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" class="btn btn-info" data-toggle="modal" data-target="#RequestTimeLine">
+                            <button type="button" rel="tooltip" title="View Timeline" class="btn btn-info" data-toggle="modal" data-target="#RequestTimeLine">
                               <i class="material-icons">person</i>
                             </button>
-                            <button type="button" rel="tooltip" class="btn btn-success">
-                              <i class="material-icons">edit</i>
+                            <button type="button" rel="tooltip" title="Apporve Request" class="btn btn-success" data-toggle="modal" data-target="#RequestApprove">
+                              <i class="material-icons">done</i>
                             </button>
-                            <button type="button" rel="tooltip" class="btn btn-danger">
+                            <button type="button" rel="tooltip" title="Reject Request" class="btn btn-danger" data-toggle="modal" data-target="#RequestReject">
                               <i class="material-icons">close</i>
                             </button>
                           </td>
@@ -186,13 +186,13 @@
                           <td>Full Access</td>
                           <td>To do HR Stuff</td>
                           <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" class="btn btn-info btn-round">
+                            <button type="button" rel="tooltip" title="View Timeline" class="btn btn-info" data-toggle="modal" data-target="#RequestTimeLine">
                               <i class="material-icons">person</i>
                             </button>
-                            <button type="button" rel="tooltip" class="btn btn-success btn-round">
-                              <i class="material-icons">edit</i>
+                            <button type="button" rel="tooltip" title="Apporve Request" class="btn btn-success" data-toggle="modal" data-target="#RequestApprove">
+                              <i class="material-icons">done</i>
                             </button>
-                            <button type="button" rel="tooltip" class="btn btn-danger btn-round">
+                            <button type="button" rel="tooltip" title="Reject Request" class="btn btn-danger" data-toggle="modal" data-target="#RequestReject">
                               <i class="material-icons">close</i>
                             </button>
                           </td>
@@ -206,13 +206,13 @@
                           <td>Full Access</td>
                           <td>To do HR Stuff</td>
                           <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" class="btn btn-info btn-simple">
+                            <button type="button" rel="tooltip" title="View Timeline" class="btn btn-info" data-toggle="modal" data-target="#RequestTimeLine">
                               <i class="material-icons">person</i>
                             </button>
-                            <button type="button" rel="tooltip" class="btn btn-success btn-simple">
-                              <i class="material-icons">edit</i>
+                            <button type="button" rel="tooltip" title="Apporve Request" class="btn btn-success" data-toggle="modal" data-target="#RequestApprove">
+                              <i class="material-icons">done</i>
                             </button>
-                            <button type="button" rel="tooltip" class="btn btn-danger btn-simple">
+                            <button type="button" rel="tooltip" title="Reject Request" class="btn btn-danger" data-toggle="modal" data-target="#RequestReject">
                               <i class="material-icons">close</i>
                             </button>
                           </td>
@@ -368,6 +368,69 @@
 
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal-->
+
+
+      <!-- Approve Modal -->
+
+      <div class="modal fade" id="RequestApprove" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Approve Request</h4>
+                </div>
+                <div class="card-body">
+
+                  <p class="card-category">Are you sure you want to approve?</p>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Approve</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal-->
+
+      <!-- Reject Modal -->
+
+      <div class="modal fade" id="RequestReject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Reject Request</h4>
+                </div>
+                <div class="card-body">
+
+                  <p class="card-category">Are you sure you want to reject?</p>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Reject</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                   </div>
                 </div>
               </div>
