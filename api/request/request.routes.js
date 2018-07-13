@@ -43,7 +43,7 @@ router.post('/', (req, res) => {
             'Reason: ' + data.message.reason + '<br/>' +
             'Request Date: ' + data.message.requestDate + '<br/>' +
             'Expire Date: ' + data.message.expireDate + '<br/><br/>' +
-            'Please <a href="localhost:3000">log in</a> to the application to proceed with the request'
+            'Please <a href="https://mat-dash.herokuapp.com/">log in</a> to the application to proceed with the request'
 
         var mailOptions = {
             from: 'batcave.mail.service',
