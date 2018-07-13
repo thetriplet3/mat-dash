@@ -7,12 +7,16 @@ function Controller() {
     this.insert = (data) => {
         return new Promise((resolve, reject) => {
             var Request = new RequestSchema(data);
-            Request.save().then(() => {
+            Request.save().then((newRequest) => {
                 console.log('Request inserted')
-                resolve({
-                    status: 200,
-                    message: "Request inserted"
+                newRequest.populate('user').populate('manager').populate('application').populate('department').execPopulate().then((data) => {
+                    console.log(data)
+                    resolve({
+                        status: 200,
+                        message: data
+                    })
                 })
+                
             }).catch((err) => {
                 reject({
                     status: 500,
