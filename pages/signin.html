@@ -16,7 +16,7 @@
   />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
-  
+
 
   <!-- Custom styles for this template -->
   <link href="../assets/css/signin.css" rel="stylesheet">
@@ -27,7 +27,7 @@
     <!--<img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     <label for="inputEmail" class="sr-only">User ID</label>
-    <input type="text" id="inputEmail" class="form-control" placeholder="User ID" required autofocus>
+    <input type="text" id="inputUserId" class="form-control" placeholder="User ID" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
     <div class="checkbox mb-3">
@@ -35,9 +35,26 @@
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <button class="btn btn-lg btn-primary btn-block" type="click" onclick="signin()">Sign in</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
   </form>
+
+
+  <script>
+    function signin() {
+      var userId = document.getElementById('inputUserId').value;
+
+      if (userId == "tratlk") {
+        window.location = 'https://mat-dash.herokuapp.com/user/dashboard';
+      }
+      else if (userId == "batlk") {
+        window.location = 'https://mat-dash.herokuapp.com/manager/dashboard';
+      }
+      else if (userId == "itslk") {
+        window.location = 'https://mat-dash.herokuapp.com/it/dashboard';
+      }
+    }
+  </script>
 </body>
 
 </html>
