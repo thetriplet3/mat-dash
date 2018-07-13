@@ -29,13 +29,13 @@
     <label for="inputEmail" class="sr-only">User ID</label>
     <input type="text" id="inputUserId" class="form-control" placeholder="User ID" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password">
     <div class="checkbox mb-3">
       <label>
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="click" onclick="signin()">Sign in</button>
+    <button class="btn btn-lg btn-primary btn-block" type="button" onclick="signin()">Sign in</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
   </form>
 
@@ -43,8 +43,8 @@
   <script>
     function signin() {
       var userId = document.getElementById('inputUserId').value;
-
-      if (userId == "tratlk") {
+      var password = document.getElementById('inputPassword').value;
+      if (userId == "tratlk" ) {
         window.location = 'https://mat-dash.herokuapp.com/user/dashboard';
       }
       else if (userId == "batlk") {
