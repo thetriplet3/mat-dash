@@ -1,4 +1,4 @@
-var mongoose = require('./Request.model');
+var mongoose = require('./request.model');
 var RequestSchema = mongoose.model('Request');
 
 
