@@ -6,6 +6,8 @@ var RequestController = require('./request.controller');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 
+var Util = require('../util/common');
+
 router.use(bodyParser.json());
 
 router.get('/', (req, res) => {
@@ -25,14 +27,6 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     RequestController.insert(req.body).then((data) => {
 
-        var transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: 'batcave.mail.service@gmail.com',
-                pass: 'b@tcaV3__'
-            }
-        });
-
         var subject = data.message.user.name + ' has requested access to ' + data.message.application.name + ' application';
         var body = 'Hello ' + data.message.manager.name + ', <br/><h3>Request Details</h3><br/>' +
             'Request ID: ' + data.message.requestId + '<br/>' +
@@ -42,24 +36,10 @@ router.post('/', (req, res) => {
             'Access Type: ' + data.message.accessType + '<br/>' +
             'Reason: ' + data.message.reason + '<br/>' +
             'Request Date: ' + data.message.requestDate + '<br/>' +
-            'Expire Date: ' + data.message.expireDate + '<br/><br/>' +
+            'Expire Date: ' + data.message.expireDate + '<br/>' +
             'Please <a href="https://mat-dash.herokuapp.com/">log in</a> to the application to proceed with the request'
 
-        var mailOptions = {
-            from: 'batcave.mail.service',
-            to: 'bruised.wayne.is.batman@gmail.com',
-            subject: subject,
-            html: body
-        };
-
-        transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log('Email sent: ' + info.response);
-            }
-        });
-
+        Util.sendMail(subject, body, data.message.manager.email)
 
         res.status(data.status).send(data);
     }).catch((err) => {
@@ -69,6 +49,24 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     RequestController.update(req.body).then((data) => {
+
+        RequestController.get(req.params.id).then((updatedData) => {
+            var subject = 'Status of the access request  AR-' + updatedData.message.requestId + ' changed to ' +  updatedData.message.state;
+            var body = 'Hello ' + updatedData.message.user.name + ', <br/><h3>Request Details</h3><br/>' +
+            'Request ID: ' + updatedData.message.requestId + '<br/>' +
+            'Application: ' + updatedData.message.application.name + '<br/>' +
+            'Manager: ' + updatedData.message.manager.name + '<br/>' +
+            'Application Role: ' + updatedData.message.applicationRole + '<br/>' +
+            'Access Type: ' + updatedData.message.accessType + '<br/>' +
+            'Reason: ' + updatedData.message.reason + '<br/>' +
+            'Request Date: ' + updatedData.message.requestDate + '<br/>' +
+            'Expire Date: ' + updatedData.message.expireDate + '<br/>' +
+            'Status: <strong>' + updatedData.message.state + '</strong><br/>' +
+            'Please <a href="https://mat-dash.herokuapp.com/">log in</a> to the application to see the details'
+
+            Util.sendMail(subject, body, updatedData.message.user.email)
+        })
+
         res.status(data.status).send(data.message);
     })
 })

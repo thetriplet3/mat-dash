@@ -52,7 +52,7 @@ function Controller() {
             }).populate('user').populate('manager').populate('application').populate('department').exec().then((data) => {
                 resolve({
                     status: 200,
-                    Request: data
+                    message: data
                 })
             }).catch((err) => {
                 reject({
@@ -66,10 +66,10 @@ function Controller() {
     this.update = (data) => {
         return new Promise((resolve, reject) => {
             RequestSchema.update(
-                { requestId: data.requestId }, data).then(() => {
+                { requestId: data.requestId }, data).then((updatedRequest) => {
                     resolve({
                         status: 200,
-                        message: "Request Updated Successfully"
+                        message: updatedRequest
                     })
                 }).catch((err) => {
                     reject({
