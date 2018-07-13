@@ -5,13 +5,13 @@ function Controller() {
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'batcave.mail.service@gmail.com',
-                pass: 'b@tcaV3__'
+                user: 'noyek.mail@gmail.com',
+                pass: 'noy3k.mail_svc'
             }
         });
 
         var mailOptions = {
-            from: 'batcave.mail.service',
+            from: 'noyek.mail@gmail.com',
             to: to,
             subject: subject,
             html: body

@@ -88,7 +88,7 @@ router.put('/:id', (req, res) => {
                     'Expire Date: ' + updatedData.message.expireDate + '<br/>' +
                     'Please <a href="https://mat-dash.herokuapp.com/">log in</a> to the application to proceed with the request'
     
-                Util.sendMail(subject, body, 'bat.it.dep@gmail.com')
+                Util.sendMail(subject, body, 'noyek.it@gmail.com')
             }
         })
 
