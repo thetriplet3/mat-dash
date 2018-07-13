@@ -26,10 +26,10 @@ function Controller() {
         })
     };
 
-    this.getAll = () => {
+    this.getAll = (filter) => {
         return new Promise((resolve, reject) => {
-            RequestSchema.find().populate('user').populate('manager').populate('application').populate('department').exec().then((data) => {
-                console.log(data);
+            RequestSchema.find(JSON.parse(filter)).populate('user').populate('manager').populate('application').populate('department').exec().then((data) => {
+                
                 resolve({
                     status: 200,
                     Requests: data

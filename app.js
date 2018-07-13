@@ -41,6 +41,16 @@ app.get('/manager', function (req, res) {
     res.sendFile(__dirname + '/pages/dashboard-manager.html');
 });
 
+app.get('/it/dashboard', function (req, res) {
+    res.sendFile(__dirname + '/pages/dashboard-it.html');
+});
+app.get('/it/requests', function (req, res) {
+    res.sendFile(__dirname + '/pages/requests-it.html');
+});
+app.get('/it', function (req, res) {
+    res.sendFile(__dirname + '/pages/dashboard-it.html');
+});
+
 
 app.listen(port, (err) => {
     if (err) {

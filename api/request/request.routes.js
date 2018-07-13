@@ -10,8 +10,9 @@ var Util = require('../util/common');
 
 router.use(bodyParser.json());
 
-router.get('/', (req, res) => {
-    RequestController.getAll().then((data) => {
+router.get('/all/:filter', (req, res) => {
+    console.log(req.body);
+    RequestController.getAll(req.params.filter).then((data) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(data.status).send(JSON.stringify(data.Requests));
     })
