@@ -23,10 +23,10 @@ $(document).ready(function () {
                     '<button type="button" rel="tooltip" title="View Timeline" id="btnView" class="btn btn-info" data-toggle="modal" data-target="#RequestTimeLine" data-obj=' + data.requestId + '>' +
                     ' <i class="material-icons">person</i>' +
                     '</button>' +
-                    '<button type="button" rel="tooltip" title="Apporve Request" id="btnAppove" class="btn btn-success" data-toggle="modal" data-target="#RequestApprove" data-obj=' + data.requestId + '>' +
+                    '<button type="button" rel="tooltip" title="Apporve Request" id="btnAppove" class="btn btn-success" data-toggle="modal" data-target="#RequestComplete" data-obj=' + data.requestId + '>' +
                     '<i class="material-icons">done</i>' +
                     '</button>' +
-                    '<button type="button" rel="tooltip" title="Reject Request" id="btnReject" class="btn btn-danger" data-toggle="modal" data-target="#RequestReject" data-obj=' + data.requestId + '>' +
+                    '<button type="button" rel="tooltip" title="Reject Request" id="btnReject" class="btn btn-danger" data-toggle="modal" data-target="#RequestClose" data-obj=' + data.requestId + '>' +
                     '<i class="material-icons">close</i>' +
                     '  </button>' +
                     '</td>');
@@ -39,19 +39,19 @@ $(document).ready(function () {
         dataType: 'json'
     });
 
-    $('#RequestApprove').on('show.bs.modal', function (e) {
+    $('#RequestComplete').on('show.bs.modal', function (e) {
         requestId = $(e.relatedTarget).data('obj');
     });
 
-    $('#RequestReject').on('show.bs.modal', function (e) {
+    $('#RequestClose').on('show.bs.modal', function (e) {
         requestId = $(e.relatedTarget).data('obj');
     });
 
-    $('#btnApproveRequest').on('click', function (e) {
+    $('#btnCompleteRequest').on('click', function (e) {
         e.preventDefault();
 
         var data = {
-            state: "APPROVED",
+            state: "COMPLETED",
             requestId: requestId
         }
 
@@ -65,17 +65,33 @@ $(document).ready(function () {
             url: urlAjax,
             contentType: "application/json",
             data: dataObj,
-            success: function (data) { alert("ajax worked"); },
-            error: function (data) { alert("ajax error"); },
+            success: function (data) {
+                $('#RequestComplete').modal('toggle');
+                $.notify({
+                    title: '<strong>Success</strong>',
+                    message: 'Request Completed'
+                },{
+                    type: 'success'
+                });
+             },
+            error: function (data) { 
+                console.log(data)
+                $.notify({
+                    title: '<strong>Error</strong>',
+                    message: 'An error occured. Please try again later.'
+                },{
+                    type: 'danger'
+                });
+             },
             dataType: 'json'
         });
     });
 
-    $('#btnRejectRequest').on('click', function (e) {
+    $('#btnCloseRequest').on('click', function (e) {
         e.preventDefault();
 
         var data = {
-            state: "REJECTED",
+            state: "CLOSED",
             requestId: requestId
         }
 
@@ -89,12 +105,24 @@ $(document).ready(function () {
             url: urlAjax,
             contentType: "application/json",
             data: dataObj,
-            success: function (data) { 
-                alert("ajax worked"); 
-            },
+            success: function (data) {
+                $('#RequestClose').modal('toggle');
+                $.notify({
+                    title: '<strong>Success</strong>',
+                    message: 'Request Closed'
+                },{
+                    type: 'success'
+                });
+             },
             error: function (data) { 
-                alert("ajax error"); 
-            },
+                console.log(data)
+                $.notify({
+                    title: '<strong>Error</strong>',
+                    message: 'An error occured. Please try again later.'
+                },{
+                    type: 'danger'
+                });
+             },
             dataType: 'json'
         });
     });

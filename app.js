@@ -17,7 +17,7 @@ app.use("/assets", express.static(__dirname + '/assets'));
 app.use('/api', router);
 
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/pages/dashboard-manager.html');
+    res.sendFile(__dirname + '/pages/signin.html');
 });
 
 

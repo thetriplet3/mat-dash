@@ -49,6 +49,7 @@ router.post('/', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
+    console.log(req.body);
     RequestController.update(req.body).then((data) => {
 
         RequestController.get(req.params.id).then((updatedData) => {
@@ -63,8 +64,15 @@ router.put('/:id', (req, res) => {
                 'Request Date: ' + updatedData.message.requestDate + '<br/>' +
                 'Expire Date: ' + updatedData.message.expireDate + '<br/>' +
                 'Status: <strong>' + updatedData.message.state + '</strong><br/>' +
-                'Please <a href="https://mat-dash.herokuapp.com/">log in</a> to the application to see the details'
+                'Please <a href="https://mat-dash.herokuapp.com/">log in</a> to the application to see the details';
 
+            if(updatedData.message.state == "COMPLETED") {
+                body = body + "<br/>" +
+                "<h3>Login credentials for application " + updatedData.message.application.name + "</h3>" +
+                "username : " + updatedData.message.user.userId + updatedData.message.requestId + "<br/>" +
+                "password : " + updatedData.message.user.userId + updatedData.message.requestId + updatedData.message.application.applicationId
+            }
+            
             Util.sendMail(subject, body, updatedData.message.user.email)
 
             if (updatedData.message.state == "APPROVED") {
