@@ -297,24 +297,24 @@
                       <p class="card-category">Request Access to HR Application</p>
                     </div>
                     <div class="card-body">
-                      <form>
+                      <form id="frmRequest">
                         <div class="row">
                           <div class="col-md-5">
                             <div class="form-group">
                               <label class="bmd-label-floating">Department</label>
-                              <input type="text" class="form-control" disabled value="Maintanance">
+                              <input type="text" id="departmentId" class="form-control" disabled value="Finance" data-db-value="DEP-03">
                             </div>
                           </div>
                           <div class="col-md-3">
                             <div class="form-group">
                               <label class="bmd-label-floating">User ID</label>
-                              <input type="text" class="form-control" disabled value="tratlk">
+                              <input type="text" id="userId" class="form-control" disabled value="tratlk">
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
                               <label class="bmd-label-floating">Application</label>
-                              <input type="text" class="form-control" disabled value="HR">
+                              <input type="text" id="applicationId" class="form-control" disabled value="HR" data-db-value="APP-001">
                             </div>
                           </div>
                         </div>
@@ -322,7 +322,7 @@
                           <div class="col-md-12">
                             <div class="form-group">
                               <label class="bmd-label-floating">Manager</label>
-                              <input type="text" class="form-control" disabled value="Bruce Wayne">
+                              <input type="text" id="managerId" class="form-control" disabled value="Bruce Wayne" data-db-value="batlk">
                             </div>
                           </div>
                         </div>
@@ -330,8 +330,9 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="bmd-label-floating">App Role</label>
-                              <select class="form-control" id="cmbAppRole">
+                              <select class="form-control" id="applicationRole">
                                 <option>Normal</option>
+                                <option>Supervisor</option>
                                 <option>Administrator</option>
                               </select>
                             </div>
@@ -339,7 +340,7 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="bmd-label-floating">Access Type</label>
-                              <select class="form-control" id="cmbAppRole">
+                              <select class="form-control" id="accessType">
                                 <option>Read-Only</option>
                                 <option>Full Access</option>
                               </select>
@@ -350,13 +351,13 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="bmd-label-floating">Request Date</label>
-                                <input type="date" id="dtRequestDate" class="form-control" value="2018-07-15">
+                                <input type="date" id="requestDate" class="form-control" value="2018-07-15">
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="bmd-label-floating">Expire Date</label>
-                                <input type="date" id="dtExpireDate" class="form-control" value="2018-07-25">
+                                <input type="date" id="expireDate" class="form-control" value="2018-07-25">
                               </div>
                             </div>
                           </div>
@@ -364,7 +365,7 @@
                           <div class="col-md-12">
                             <div class="form-group">
                               <label class="bmd-label-floating">Reason</label>
-                              <input type="text" class="form-control">
+                              <input type="text" id="reason" class="form-control">
                             </div>
                           </div>
                         </div>
@@ -374,7 +375,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Request Access</button>
+                  <button type="button" id= "btnRequest" class="btn btn-primary">Request Access</button>
                 </div>
               </div>
             </div>
@@ -436,13 +437,14 @@
   <script src="../assets/js/material-dashboard.min.js?v=2.1.0" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  <script src="../assets/demo/functions-user.js"></script>
   <script>
     $(document).ready(function () {
       // Javascript method's body can be found in assets/js/demos.js
       md.initDashboardPageCharts();
 
-      document.getElementById('dtRequestDate').valueAsDate = new Date();
-      document.getElementById('dtExpireDate').valueAsDate = new Date() + 10;
+      document.getElementById('requestDate').valueAsDate = new Date();
+      document.getElementById('expireDate').valueAsDate = new Date();
     });
   </script>
 </body>

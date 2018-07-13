@@ -1,11 +1,20 @@
 const express = require('express')
 const app = express();
 
+const bodyParser = require('body-parser')
+const router = require('./api/routes.js');
 var port = process.env.PORT || 3000;
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
 
 app.set("view options", { layout: false });
 app.use("/assets", express.static(__dirname + '/assets'));
 
+app.use('/api', router);
 
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/pages/dashboard-manager.html');
