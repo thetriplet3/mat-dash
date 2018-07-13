@@ -67,8 +67,24 @@ $(document).ready(function () {
             url: urlAjax,
             contentType: "application/json",
             data: dataObj,
-            success: function (data) { alert("ajax worked"); },
-            error: function (data) { alert("ajax error"); },
+            success: function (data) {
+                $('#RequestApprove').modal('toggle');
+                $.notify({
+                    title: '<strong>Success</strong>',
+                    message: 'Request Approved'
+                },{
+                    type: 'success'
+                });
+             },
+            error: function (data) { 
+                console.log(data)
+                $.notify({
+                    title: '<strong>Error</strong>',
+                    message: 'An error occured. Please try again later.'
+                },{
+                    type: 'danger'
+                });
+             },
             dataType: 'json'
         });
     });
@@ -91,12 +107,24 @@ $(document).ready(function () {
             url: urlAjax,
             contentType: "application/json",
             data: dataObj,
-            success: function (data) { 
-                //alert("ajax worked"); 
-            },
+            success: function (data) {
+                $('#RequestReject').modal('toggle');
+                $.notify({
+                    title: '<strong>Success</strong>',
+                    message: 'Request Rejected'
+                },{
+                    type: 'success'
+                });
+             },
             error: function (data) { 
-                //alert("ajax error"); 
-            },
+                console.log(data)
+                $.notify({
+                    title: '<strong>Error</strong>',
+                    message: 'An error occured. Please try again later.'
+                },{
+                    type: 'danger'
+                });
+             },
             dataType: 'json'
         });
     });

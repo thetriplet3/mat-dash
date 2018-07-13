@@ -67,11 +67,23 @@ $(document).ready(function () {
             contentType: "application/json",
             data: dataObj,
             success: function (data) {
-                //alert("ajax worked"); 
-            },
-            error: function (data) {
-                //alert("ajax error"); 
-            },
+                $('#RequestAccess').modal('toggle');
+                $.notify({
+                    title: '<strong>Success</strong>',
+                    message: 'Request Created'
+                },{
+                    type: 'success'
+                });
+             },
+            error: function (data) { 
+                console.log(data)
+                $.notify({
+                    title: '<strong>Error</strong>',
+                    message: 'An error occured. Please try again later.'
+                },{
+                    type: 'danger'
+                });
+             },
             dataType: 'json'
         });
     });
