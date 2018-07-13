@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var requestId;
     var data = {
-        userId: "tratlk"
+        userId: "dave"
     }
     var dataObj = JSON.stringify(data);
     var urlAjax = "/api/request/all/" + dataObj;
