@@ -10,9 +10,7 @@ $(document).ready(function () {
         url: urlAjax,
         contentType: "application/json",
         success: function (response) {
-            console.log(response);
             jQuery.each(response, function (i, data) {
-                console.log(data);
                 $("#tableBody").append("<tr>");
                 $("#tableBody").append("<td>" + (i + 1) + "</td>");
                 $("#tableBody").append("<td>" + data.user.name + "</td>");

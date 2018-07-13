@@ -1,7 +1,8 @@
 $(document).ready(function () {
     var requestId;
     var data = {
-        state : "CREATED"
+        state : "CREATED",
+        managerId : "batlk"
     }
     var dataObj = JSON.stringify(data);
     var urlAjax = "/api/request/all/"+dataObj;

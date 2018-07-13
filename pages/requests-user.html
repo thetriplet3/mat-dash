@@ -150,68 +150,14 @@
                       <thead>
                         <tr>
                           <th class="text-center">#</th>
+                          <th>Status</th>
                           <th>Application</th>
                           <th>App Role</th>
                           <th>Access Type</th>
                           <th>Reason</th>
-                          <th class="text-right">Actions</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-center">1</td>
-                          <td>HR</td>
-                          <td>Administrator</td>
-                          <td>Full Access</td>
-                          <td>To do HR Stuff</td>
-                          <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" title="View Timeline" class="btn btn-info" data-toggle="modal" data-target="#RequestTimeLine">
-                              <i class="material-icons">person</i>
-                            </button>
-                            <button type="button" rel="tooltip" title="Modify Request" class="btn btn-warning" data-toggle="modal" data-target="#RequestModify">
-                              <i class="material-icons">create</i>
-                            </button>
-                            <button type="button" rel="tooltip" title="Cancel Request" class="btn btn-danger" data-toggle="modal" data-target="#RequestCancel">
-                              <i class="material-icons">close</i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">2</td>
-                          <td>HR</td>
-                          <td>Administrator</td>
-                          <td>Full Access</td>
-                          <td>To do HR Stuff</td>
-                          <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" title="View Timeline" class="btn btn-info" data-toggle="modal" data-target="#RequestTimeLine">
-                              <i class="material-icons">person</i>
-                            </button>
-                            <button type="button" rel="tooltip" title="Modify Request" class="btn btn-warning" data-toggle="modal" data-target="#RequestModify">
-                              <i class="material-icons">create</i>
-                            </button>
-                            <button type="button" rel="tooltip" title="Cancel Request" class="btn btn-danger" data-toggle="modal" data-target="#RequestCancel">
-                              <i class="material-icons">close</i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">3</td>
-                          <td>HR</td>
-                          <td>Administrator</td>
-                          <td>Full Access</td>
-                          <td>To do HR Stuff</td>
-                          <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" title="View Timeline" class="btn btn-info" data-toggle="modal" data-target="#RequestTimeLine">
-                              <i class="material-icons">person</i>
-                            </button>
-                            <button type="button" rel="tooltip" title="Modify Request" class="btn btn-warning" data-toggle="modal" data-target="#RequestModify">
-                              <i class="material-icons">create</i>
-                            </button>
-                            <button type="button" rel="tooltip" title="Cancel Request" class="btn btn-danger" data-toggle="modal" data-target="#RequestCancel">
-                              <i class="material-icons">close</i>
-                            </button>
-                          </td>
-                        </tr>
+                      <tbody id="tableBody">
                       </tbody>
                     </table>
                   </div>
@@ -586,6 +532,7 @@
   <script src="../assets/js/material-dashboard.min.js?v=2.1.0" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  <script src="../assets/demo/functions-user.js"></script>
 </body>
 
 </html>
