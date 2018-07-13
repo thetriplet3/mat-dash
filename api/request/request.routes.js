@@ -52,21 +52,39 @@ router.put('/:id', (req, res) => {
     RequestController.update(req.body).then((data) => {
 
         RequestController.get(req.params.id).then((updatedData) => {
-            var subject = 'Status of the access request  AR-' + updatedData.message.requestId + ' changed to ' +  updatedData.message.state;
+            var subject = 'Status of the access request  AR-' + updatedData.message.requestId + ' changed to ' + updatedData.message.state;
             var body = 'Hello ' + updatedData.message.user.name + ', <br/><h3>Request Details</h3><br/>' +
-            'Request ID: ' + updatedData.message.requestId + '<br/>' +
-            'Application: ' + updatedData.message.application.name + '<br/>' +
-            'Manager: ' + updatedData.message.manager.name + '<br/>' +
-            'Application Role: ' + updatedData.message.applicationRole + '<br/>' +
-            'Access Type: ' + updatedData.message.accessType + '<br/>' +
-            'Reason: ' + updatedData.message.reason + '<br/>' +
-            'Request Date: ' + updatedData.message.requestDate + '<br/>' +
-            'Expire Date: ' + updatedData.message.expireDate + '<br/>' +
-            'Status: <strong>' + updatedData.message.state + '</strong><br/>' +
-            'Please <a href="https://mat-dash.herokuapp.com/">log in</a> to the application to see the details'
+                'Request ID: ' + updatedData.message.requestId + '<br/>' +
+                'Application: ' + updatedData.message.application.name + '<br/>' +
+                'Manager: ' + updatedData.message.manager.name + '<br/>' +
+                'Application Role: ' + updatedData.message.applicationRole + '<br/>' +
+                'Access Type: ' + updatedData.message.accessType + '<br/>' +
+                'Reason: ' + updatedData.message.reason + '<br/>' +
+                'Request Date: ' + updatedData.message.requestDate + '<br/>' +
+                'Expire Date: ' + updatedData.message.expireDate + '<br/>' +
+                'Status: <strong>' + updatedData.message.state + '</strong><br/>' +
+                'Please <a href="https://mat-dash.herokuapp.com/">log in</a> to the application to see the details'
 
             Util.sendMail(subject, body, updatedData.message.user.email)
+
+            if (updatedData.message.state == "APPROVED") {
+                var subject = updatedData.message.user.name + ' has requested access to ' + updatedData.message.application.name + ' application';
+                var body = 'Hello IT Support, <br/><h3>Request Details</h3><br/>' +
+                    'Request ID: ' + updatedData.message.requestId + '<br/>' +
+                    'Application: ' + updatedData.message.application.name + '<br/>' +
+                    'Employee: ' + updatedData.message.user.name + '<br/>' +
+                    'Application Role: ' + updatedData.message.applicationRole + '<br/>' +
+                    'Access Type: ' + updatedData.message.accessType + '<br/>' +
+                    'Reason: ' + updatedData.message.reason + '<br/>' +
+                    'Request Date: ' + updatedData.message.requestDate + '<br/>' +
+                    'Expire Date: ' + updatedData.message.expireDate + '<br/>' +
+                    'Please <a href="https://mat-dash.herokuapp.com/">log in</a> to the application to proceed with the request'
+    
+                Util.sendMail(subject, body, 'bat.it.dep@gmail.com')
+            }
         })
+
+        
 
         res.status(data.status).send(data.message);
     })
