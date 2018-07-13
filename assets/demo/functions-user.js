@@ -33,8 +33,12 @@ $(document).ready(function () {
             url: urlAjax,
             contentType: "application/json",
             data: dataObj,
-            success: function (data) { alert("ajax worked"); },
-            error: function (data) { alert("ajax error"); },
+            success: function (data) { 
+                //alert("ajax worked"); 
+            },
+            error: function (data) { 
+                //alert("ajax error"); 
+            },
             dataType: 'json'
         });
     });
