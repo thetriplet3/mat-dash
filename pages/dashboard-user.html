@@ -296,20 +296,19 @@
           <!-- Modal -->
           <div class="modal fade" id="RequestAccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
+              <div class="modal-content card">
+                <div class="modal-header card-header card-header-danger">
+                  <h4 class="modal-title card-title">Request Access</h4>
                   <!--<h5 class="modal-title" id="RequestAccessLongTitle">Request Access</h5>-->
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
-                  <div class="card">
-                    <div class="card-header card-header-primary">
-                      <h4 class="card-title">Request Access</h4>
-                      <p class="card-category">Request Access to HR Application</p>
-                    </div>
-                    <div class="card-body">
+                <div class="modal-body card-body">
+
+                  <p class="card-category">Request Access to HR Application</p>
+                  <div class="">
+                    <div class="">
                       <form id="frmRequest">
                         <div class="row">
                           <div class="col-md-5">
@@ -386,9 +385,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer card-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" id="btnRequest" class="btn btn-primary">Request Access</button>
+                  <button type="button" id="btnRequest" class="btn btn-danger">Request Access</button>
                 </div>
               </div>
             </div>
