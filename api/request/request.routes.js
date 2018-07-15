@@ -67,10 +67,15 @@ router.put('/:id', (req, res) => {
                 'Please <a href="https://mat-dash.herokuapp.com/">log in</a> to the application to see the details';
 
             if(updatedData.message.state == "COMPLETED") {
+                Util.sendMail(subject, body, updatedData.message.manager.email)
                 body = body + "<br/>" +
                 "<h3>Login credentials for application " + updatedData.message.application.name + "</h3>" +
                 "username : " + updatedData.message.user.userId + updatedData.message.requestId + "<br/>" +
                 "password : " + updatedData.message.user.userId + updatedData.message.requestId + updatedData.message.application.applicationId
+            
+            }
+            else if(updatedData.message.state == "CLOSED") {
+                Util.sendMail(subject, body, updatedData.message.manager.email)
             }
             
             Util.sendMail(subject, body, updatedData.message.user.email)
