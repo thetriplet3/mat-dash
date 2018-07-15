@@ -1,6 +1,6 @@
 var mongoose = require('./request.model');
 var RequestSchema = mongoose.model('Request');
-
+var RequestActionSchema = mongoose.model('RequestAction');
 
 function Controller() {
 
@@ -10,13 +10,19 @@ function Controller() {
             Request.save().then((newRequest) => {
                 console.log('Request inserted')
                 newRequest.populate('user').populate('manager').populate('application').populate('department').execPopulate().then((data) => {
-                    console.log(data)
-                    resolve({
-                        status: 200,
-                        message: data
+                    var newRequestAction = new RequestActionSchema({
+                        requestId: data.requestId,
+                        action: "REQUEST_CREATED",
+                        userId: data.userId,
+                    });
+                    newRequestAction.save().then(() => {
+                        resolve({
+                            status: 200,
+                            message: data
+                        })
                     })
                 })
-                
+
             }).catch((err) => {
                 reject({
                     status: 500,
@@ -28,8 +34,8 @@ function Controller() {
 
     this.getAll = (filter) => {
         return new Promise((resolve, reject) => {
-            RequestSchema.find(JSON.parse(filter)).populate('user').populate('manager').populate('application').populate('department').exec().then((data) => {
-                
+            RequestSchema.find(JSON.parse(filter)).populate('user').populate('manager').populate('application').populate('department').populate('actions').exec().then((data) => {
+
                 resolve({
                     status: 200,
                     Requests: data
@@ -67,9 +73,16 @@ function Controller() {
         return new Promise((resolve, reject) => {
             RequestSchema.update(
                 { requestId: data.requestId }, data).then((updatedRequest) => {
-                    resolve({
-                        status: 200,
-                        message: updatedRequest
+                    var newRequestAction = new RequestActionSchema({
+                        requestId: data.requestId,
+                        action: "REQUEST_UPDATED",
+                        userId: "manager",
+                    });
+                    newRequestAction.save().then(() => {
+                        resolve({
+                            status: 200,
+                            message: updatedRequest
+                        })
                     })
                 }).catch((err) => {
                     reject({

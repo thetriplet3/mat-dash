@@ -94,6 +94,33 @@ var ApplicationSchema = new Schema({
     }
 })
 
+var RequestActionSchema = new Schema({
+    requestActionId: {
+        type:Number,
+        required:true
+    },
+    requestId: { 
+        type:Number,
+        required: true
+    },
+    action: {
+        type: String,
+        required: true
+    },
+    comment: {
+        type: String,
+        required: false
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    userId: {
+        type: String,
+        required: true
+    }
+})
+
 
 RequestSchema.virtual('user', {
     ref: 'User',
@@ -123,6 +150,19 @@ RequestSchema.virtual('department', {
     justOne: true
 });
 
+RequestSchema.virtual('actions', {
+    ref: 'RequestAction',
+    localField: 'requestId',
+    foreignField: 'requestId',
+    justOne: false
+});
+
+RequestActionSchema.virtual('user', {
+    ref: 'User',
+    localField: 'userId',
+    foreignField: 'userId',
+    justOne: true
+});
 
 RequestSchema.set('toObject', { virtuals: true });
 RequestSchema.set('toJSON', { virtuals: true });
@@ -131,8 +171,9 @@ mongoose.model('User', UserSchema, 'user');
 mongoose.model('Application', ApplicationSchema, 'application');
 mongoose.model('Department', DepartmentSchema, 'department');
 mongoose.model('Request', RequestSchema);
+mongoose.model('RequestAction', RequestActionSchema);
 
 autoIncrement.initialize(mongoose.connection);
 RequestSchema.plugin(autoIncrement.plugin, { model: 'Request', field: 'requestId', startAt: 100000 });
-
+RequestActionSchema.plugin(autoIncrement.plugin, { model: 'RequestAction', field: 'requestActionId', startAt: 500000 });
 module.exports = mongoose;
