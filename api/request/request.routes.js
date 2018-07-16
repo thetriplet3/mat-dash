@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var RequestController = require('./request.controller');
+var RequestActionController = require('../requestAction/requestAction.controller');
 
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
@@ -42,7 +43,20 @@ router.post('/', (req, res) => {
 
         Util.sendMail(subject, body, data.message.manager.email)
 
-        res.status(data.status).send(data);
+        var newRequestAction = {
+            requestId: data.message.requestId,
+            action: "Request Created",
+            comment: "Request Created by " + data.message.user.name,
+            userId: data.message.user.userId
+        }
+
+        RequestActionController.insert(newRequestAction).then((requestActionData) => {
+            res.status(data.status).send(data);
+        }).catch((err) => {
+            res.status(err.status).send(err.message);
+        })
+
+
     }).catch((err) => {
         res.status(err.status).send(err.message);
     })
@@ -50,6 +64,8 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     console.log(req.body);
+    var newRequestAction;
+    var userId;
     RequestController.update(req.body).then((data) => {
 
         RequestController.get(req.params.id).then((updatedData) => {
@@ -66,21 +82,30 @@ router.put('/:id', (req, res) => {
                 'Status: <strong>' + updatedData.message.state + '</strong><br/>' +
                 'Please <a href="https://mat-dash.herokuapp.com/">log in</a> to the application to see the details';
 
-            if(updatedData.message.state == "COMPLETED") {
+            if (updatedData.message.state == "COMPLETED") {
+                userId = "it.service";
                 Util.sendMail(subject, body, updatedData.message.manager.email)
                 body = body + "<br/>" +
-                "<h3>Login credentials for application " + updatedData.message.application.name + "</h3>" +
-                "username : " + updatedData.message.user.userId + updatedData.message.requestId + "<br/>" +
-                "password : " + updatedData.message.user.userId + updatedData.message.requestId + updatedData.message.application.applicationId
-            
+                    "<h3>Login credentials for application " + updatedData.message.application.name + "</h3>" +
+                    "username : " + updatedData.message.user.userId + updatedData.message.requestId + "<br/>" +
+                    "password : " + updatedData.message.user.userId + updatedData.message.requestId + updatedData.message.application.applicationId
+
             }
-            else if(updatedData.message.state == "CLOSED") {
+            else if (updatedData.message.state == "CLOSED") {
+                userId = "it.service";
                 Util.sendMail(subject, body, updatedData.message.manager.email)
             }
-            
+
+            if (data.comment != null) {
+                body = body + "<br/>" +
+                    "<h3>Additional Comments</h3>" +
+                    data.comment;
+            }
+
             Util.sendMail(subject, body, updatedData.message.user.email)
 
             if (updatedData.message.state == "APPROVED") {
+                userId = updatedData.message.manager.userId;
                 var subject = updatedData.message.user.name + ' has requested access to ' + updatedData.message.application.name + ' application';
                 var body = 'Hello IT Support, <br/><h3>Request Details</h3><br/>' +
                     'Request ID: ' + updatedData.message.requestId + '<br/>' +
@@ -92,14 +117,32 @@ router.put('/:id', (req, res) => {
                     'Request Date: ' + updatedData.message.requestDate + '<br/>' +
                     'Expire Date: ' + updatedData.message.expireDate + '<br/>' +
                     'Please <a href="https://mat-dash.herokuapp.com/">log in</a> to the application to proceed with the request'
-    
-                Util.sendMail(subject, body, 'noyek.it@gmail.com')
+
+                Util.sendMail(subject, body, 'noyek.it@gmail.com');
+
             }
+            else if(updatedData.message.state == "REJECTED") {
+                userId = updatedData.message.manager.userId;
+            }
+
+            newRequestAction = {
+                requestId: updatedData.message.requestId,
+                action: "Request status changed to " + updatedData.message.state,
+                comment: data.comment,
+                userId: userId
+            }
+
+            RequestActionController.insert(newRequestAction).then((reqData) => {
+                res.status(data.status).send(data.message);
+            }).catch((err) => {
+                res.status(err.status).send(err.message);
+            })
+        }).catch((err) => {
+            console.log(err);
+            res.status(err.status).send(err.message);
         })
-
-        
-
-        res.status(data.status).send(data.message);
+    }).catch((err) => {
+        res.status(err.status).send(err.message);
     })
 })
 

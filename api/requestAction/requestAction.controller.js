@@ -1,21 +1,19 @@
-var mongoose = require('./request.model');
-var RequestSchema = mongoose.model('Request');
+var mongoose = require('./RequestAction.model');
+var RequestActionSchema = mongoose.model('RequestAction');
 
 function Controller() {
 
     this.insert = (data) => {
         return new Promise((resolve, reject) => {
-            var Request = new RequestSchema(data);
-            Request.save().then((newRequest) => {
-                console.log('Request inserted')
-                newRequest.populate('user').populate('manager').populate('application').populate('department').execPopulate().then((data) => {
-                    resolve({
-                        status: 200,
-                        message: data
-                    })
+            var RequestAction = new RequestActionSchema(data);
+            RequestAction.save().then((newRequestAction) => {
+                console.log('RequestAction inserted')
+                resolve({
+                    status: 200,
+                    message: newRequestAction
                 })
-
             }).catch((err) => {
+                console.log()
                 reject({
                     status: 500,
                     message: err
@@ -26,11 +24,10 @@ function Controller() {
 
     this.getAll = (filter) => {
         return new Promise((resolve, reject) => {
-            RequestSchema.find(JSON.parse(filter)).populate('user').populate('manager').populate('application').populate('department').populate('actions').exec().then((data) => {
-
+            RequestActionSchema.find(JSON.parse(filter)).exec().then((data) => {
                 resolve({
                     status: 200,
-                    Requests: data
+                    RequestActions: data
                 })
             }).catch((err) => {
                 console.log(err);
@@ -45,19 +42,17 @@ function Controller() {
 
     this.get = (id) => {
         return new Promise((resolve, reject) => {
-            RequestSchema.findOne({
-                requestId: id
-            }).populate('user').populate('manager').populate('application').populate('department').exec().then((data) => {
-                console.log((data));
+            RequestActionSchema.findOne({
+                RequestActionId: id
+            }).exec().then((data) => {
                 resolve({
                     status: 200,
                     message: data
                 })
             }).catch((err) => {
-                console.log((err));
                 reject({
                     status: 404,
-                    message: "Error:- Request not found "
+                    message: "Error:- RequestAction not found "
                 })
             })
         })
@@ -65,15 +60,13 @@ function Controller() {
 
     this.update = (data) => {
         return new Promise((resolve, reject) => {
-            RequestSchema.update(
-                { requestId: data.requestId }, data).then((updatedRequest) => {
-                    console.log("Request Updated!");
+            RequestActionSchema.update(
+                { requestActionId: data.requestActionId }, data).then((updatedRequestAction) => {
                     resolve({
                         status: 200,
-                        message: updatedRequest
+                        message: updatedRequestAction
                     })
                 }).catch((err) => {
-                    console.log(err);
                     reject({
                         status: 500,
                         message: "Error:- " + err
@@ -84,10 +77,10 @@ function Controller() {
 
     this.delete = (id) => {
         return new Promise((resolve, reject) => {
-            RequestSchema.deleteOne({ requestId: id }).then(() => {
+            RequestActionSchema.deleteOne({ requestActionId: id }).then(() => {
                 resolve({
                     status: 200,
-                    message: "Request deleted"
+                    message: "RequestAction deleted"
                 })
             }).catch((err) => {
                 reject({
