@@ -1,5 +1,7 @@
 var mongoose = require('./request.model');
 var RequestSchema = mongoose.model('Request');
+
+var mongoose = require('../requestAction/requestAction.model');
 var RequestActionSchema = mongoose.model('RequestAction');
 
 function Controller() {
