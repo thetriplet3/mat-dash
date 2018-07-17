@@ -67,23 +67,79 @@ $(document).ready(function () {
             contentType: "application/json",
             data: dataObj,
             success: function (data) {
-                $('#RequestAccess').modal('toggle');
+                $('#RequestAccessHR').modal('toggle');
                 $.notify({
                     title: '<strong>Success</strong>',
                     message: 'Request Created'
-                },{
-                    type: 'success'
-                });
-             },
-            error: function (data) { 
+                }, {
+                        type: 'success'
+                    });
+            },
+            error: function (data) {
                 console.log(data)
                 $.notify({
                     title: '<strong>Error</strong>',
                     message: 'An error occured. Please try again later.'
-                },{
-                    type: 'danger'
-                });
-             },
+                }, {
+                        type: 'danger'
+                    });
+            },
+            dataType: 'json'
+        });
+    });
+
+    $('#btnRequestRISK').on('click', function (e) {
+        e.preventDefault();
+
+        var userId = $('#userIdRISK').val();
+        var departmentId = $('#departmentIdRISK').data('db-value');
+        var applicationId = $('#applicationIdRISK').data('db-value');
+        var managerId = $('#managerIdRISK').data('db-value');
+        var applicationRole = $('#applicationRoleRISK').val();
+        var accessType = $('#accessTypeRISK').val();
+        var requestDate = $('#requestDateRISK').val();
+        var expireDate = $('#expireDateRISK').val();
+        var reason = $('#reasonRISK').val();
+
+        var data = {
+            userId: userId,
+            departmentId: departmentId,
+            applicationId: applicationId,
+            managerId: managerId,
+            applicationRole: applicationRole,
+            accessType: accessType,
+            requestDate: requestDate,
+            expireDate: expireDate,
+            reason: reason
+
+        }
+
+        var dataObj = JSON.stringify(data);
+        var urlAjax = "/api/request";
+
+        $.ajax({
+            type: "POST",
+            url: urlAjax,
+            contentType: "application/json",
+            data: dataObj,
+            success: function (data) {
+                $('#RequestAccessRISK').modal('toggle');
+                $.notify({
+                    title: '<strong>Success</strong>',
+                    message: 'Request Created'
+                }, {
+                        type: 'success'
+                    });
+            },
+            error: function (data) {
+                console.log(data)
+                $.notify({
+                    title: '<strong>Error</strong>',
+                    message: 'An error occured. Please try again later.'
+                }, {
+                        type: 'danger'
+                    });
+            },
             dataType: 'json'
         });
     });
