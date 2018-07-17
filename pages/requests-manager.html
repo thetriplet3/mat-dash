@@ -20,7 +20,7 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
   <link href="../assets/css/timeline.css" rel="stylesheet" />
-  <link href="/node_modules/toastr/build/toastr.css" rel="stylesheet"/>
+  <link href="/node_modules/toastr/build/toastr.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -381,6 +381,25 @@
 
       <!-- Modal-->
 
+
+      <div class="modal fade" id="DynamicTimeLine" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content card">
+            <div class="modal-header card-header card-header-danger">
+
+              <h4 class="card-title">Request Details</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body card-body">
+              <p class="card-category">Timeline</p>
+              <div class="timeline-centered" id="timelineStart">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Approve Modal -->
 

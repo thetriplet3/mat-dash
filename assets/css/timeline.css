@@ -108,8 +108,9 @@ img
 
                 .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner .timeline-time {
                     left: auto;
-                    right: -100px;
+                    right: -102px;
                     text-align: left;
+                    width: 100px;
                 }
 
                 .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner .timeline-icon {
@@ -159,6 +160,7 @@ img
             .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time {
                 position: absolute;
                 left: -100px;
+                width: 102px;
                 text-align: right;
                 padding: 10px;
                 -webkit-box-sizing: border-box;
