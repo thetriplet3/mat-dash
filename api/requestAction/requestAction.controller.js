@@ -1,4 +1,4 @@
-var mongoose = require('./RequestAction.model');
+var mongoose = require('./requestAction.model');
 var RequestActionSchema = mongoose.model('RequestAction');
 
 function Controller() {
