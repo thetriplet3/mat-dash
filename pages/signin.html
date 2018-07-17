@@ -9,12 +9,9 @@
 
   <title>Sign In</title>
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
-    crossorigin="anonymous">
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
-  />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <!-- CSS Files -->
 
 
@@ -23,38 +20,99 @@
 </head>
 
 <body class="text-center">
-  <form class="form-signin">
-    <!--<img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail" class="sr-only">User ID</label>
-    <input type="text" id="inputUserId" class="form-control" placeholder="User ID" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password">
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" type="button" onclick="signin()">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-  </form>
+  <div class="container">
+    <div class="row">
+
+      <!-- Mixins-->
+      <!-- Pen Title
+      <div class="pen-title">
+        <h1>Sign In</h1>
+      </div>
+      -->
+      <br/>
+      <div class="container">
+        <div class="card"></div>
+        <div class="card">
+          <h1 class="title">SIGN IN</h1>
+
+          <div class="input-container">
+            <input type="text" id="inputUserId" />
+            <label for="Username">User ID</label>
+            <div class="bar"></div>
+          </div>
+          <div class="input-container">
+            <input type="password" id="inputPassword" />
+            <label for="Password">Password</label>
+            <div class="bar"></div>
+          </div>
+          <div class="button-container">
+            <button onclick="signin()">
+              <span>SIGN IN</span>
+            </button>
+          </div>
+          <div class="footer">
+            <a href="#">Forgot your password?</a>
+          </div>
+
+        </div>
+        <div class="card alt">
+          <div class="toggle"></div>
+          <h1 class="title">Register
+            <div class="close"></div>
+          </h1>
+          <form>
+            <div class="input-container">
+              <input type="text" id="Username" required="required" />
+              <label for="Username">Username</label>
+              <div class="bar"></div>
+            </div>
+            <div class="input-container">
+              <input type="password" id="Password" required="required" />
+              <label for="Password">Password</label>
+              <div class="bar"></div>
+            </div>
+            <div class="input-container">
+              <input type="password" id="Repeat Password" required="required" />
+              <label for="Repeat Password">Repeat Password</label>
+              <div class="bar"></div>
+            </div>
+            <div class="button-container">
+              <button>
+                <span>Next</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
 
 
-  <script>
-    function signin() {
-      var userId = document.getElementById('inputUserId').value;
-      var password = document.getElementById('inputPassword').value;
-      if (userId == "dave" ) {
-        window.location = 'https://mat-dash.herokuapp.com/user/dashboard';
-      }
-      else if (userId == "manager") {
-        window.location = 'https://mat-dash.herokuapp.com/manager/dashboard';
-      }
-      else if (userId == "itslk") {
-        window.location = 'https://mat-dash.herokuapp.com/it/dashboard';
-      }
-    }
-  </script>
+      <script>
+        $(document).ready(function () {
+          $('.toggle').on('click', function () {
+            $('.container').stop().addClass('active');
+          });
+
+          $('.close').on('click', function () {
+            $('.container').stop().removeClass('active');
+          });
+
+        });
+        function signin() {
+          var userId = document.getElementById('inputUserId').value;
+          var password = document.getElementById('inputPassword').value;
+          alert(userId);
+          if (userId == "dave") {
+            console.log(userId == "dave");
+            window.location = 'https://mat-dash.herokuapp.com/user/dashboard';
+          }
+          else if (userId == "manager") {
+            window.location = 'https://mat-dash.herokuapp.com/manager/dashboard';
+          }
+          else if (userId == "itslk") {
+            window.location = 'https://mat-dash.herokuapp.com/it/dashboard';
+          }
+        }
+      </script>
 </body>
 
 </html>
