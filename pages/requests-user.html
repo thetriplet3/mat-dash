@@ -20,7 +20,7 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
   <link href="../assets/css/timeline.css" rel="stylesheet" />
-  <link href="/node_modules/toastr/build/toastr.css" rel="stylesheet"/>
+  <link href="/node_modules/toastr/build/toastr.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -137,10 +137,10 @@
       </nav>
       <!-- End Navbar -->
       <div class="content">
-        <div class="container-fluid" >
+        <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <div class="card" >
+              <div class="card">
                 <div class="card-header card-header-danger">
                   <h4 class="card-title ">Access Requests</h4>
                   <p class="card-category"> Access Requests for Applications</p>
@@ -188,127 +188,140 @@
                   <p class="card-category">Timeline</p>
                 </div>
                 <div class="card-body">
-                  <div class="">
-                    <div class="">
-                      <div class="timeline-centered">
+                  <div class="timeline-centered">
+                    <article class="timeline-entry">
+                      <div class="timeline-entry-inner">
+                        <time class="timeline-time" datetime="2014-01-10T03:45">
+                          <span>10:50 AM</span>
+                          <span>Today</span>
+                        </time>
 
-                        <article class="timeline-entry">
+                        <div class="timeline-icon bg-success">
+                          <i class="entypo-feather"></i>
+                        </div>
 
-                          <div class="timeline-entry-inner">
-                            <time class="timeline-time" datetime="2014-01-10T03:45">
-                              <span>10:50 AM</span>
-                              <span>Today</span>
-                            </time>
+                        <div class="timeline-label">
+                          <h2>
+                            Request status changed to
+                            <a href="">Completed</a>
+                          </h2>
+                          <p>Credentials has sent to the user.</p>
+                        </div>
+                      </div>
 
-                            <div class="timeline-icon bg-success">
-                              <i class="entypo-feather"></i>
-                            </div>
+                    </article>
 
-                            <div class="timeline-label">
-                              <h2>
-                                Request status changed to
-                                <a href="">Completed</a>
-                              </h2>
-                              <p>Credentials has sent to the user.</p>
-                            </div>
-                          </div>
+                    <article class="timeline-entry left-aligned">
 
-                        </article>
+                      <div class="timeline-entry-inner">
+                        <time class="timeline-time" datetime="2014-01-10T03:45">
+                          <span>10:45 AM</span>
+                          <span>Today</span>
+                        </time>
 
+                        <div class="timeline-icon bg-secondary">
+                          <i class="entypo-suitcase"></i>
+                        </div>
 
-                        <article class="timeline-entry left-aligned">
+                        <div class="timeline-label">
+                          <h2>
+                            Request status changed to
+                            <a href="">Accepted</a>
+                          </h2>
+                          <p>IT Service has accepted the request</p>
+                        </div>
+                      </div>
 
-                          <div class="timeline-entry-inner">
-                            <time class="timeline-time" datetime="2014-01-10T03:45">
-                              <span>10:45 AM</span>
-                              <span>Today</span>
-                            </time>
+                    </article>
 
-                            <div class="timeline-icon bg-secondary">
-                              <i class="entypo-suitcase"></i>
-                            </div>
+                    <article class="timeline-entry">
 
-                            <div class="timeline-label">
-                              <h2>
-                                Request status changed to
-                                <a href="">Accepted</a>
-                              </h2>
-                              <p>IT Service has accepted the request</p>
-                            </div>
-                          </div>
+                      <div class="timeline-entry-inner">
+                        <time class="timeline-time" datetime="2014-01-10T03:45">
+                          <span>09:18 AM</span>
+                          <span>Today</span>
+                        </time>
 
-                        </article>
+                        <div class="timeline-icon bg-secondary">
+                          <i class="entypo-camera"></i>
+                        </div>
 
-                        <article class="timeline-entry">
-
-                          <div class="timeline-entry-inner">
-                            <time class="timeline-time" datetime="2014-01-10T03:45">
-                              <span>09:18 AM</span>
-                              <span>Today</span>
-                            </time>
-
-                            <div class="timeline-icon bg-secondary">
-                              <i class="entypo-camera"></i>
-                            </div>
-
-                            <div class="timeline-label">
-                              <h2>
-                                Request status changed to
-                                <a href="">Approved</a>
-                              </h2>
-                              <p>
-                                <a href="#">Alfred Pennywoth</a>
-                                <span>Approved the Request</span>
-                              </p>
-                            </div>
-
-                          </div>
-
-                        </article>
-
-                        <article class="timeline-entry left-aligned">
-
-                          <div class="timeline-entry-inner">
-                            <time class="timeline-time" datetime="2014-01-10T03:45">
-                              <span>08:45 AM</span>
-                              <span>Today</span>
-                            </time>
-
-                            <div class="timeline-icon bg-primary">
-                              <i class="entypo-camera"></i>
-                            </div>
-
-                            <div class="timeline-label">
-                              <h2>
-                                Request Created
-                              </h2>
-                              <p>
-                                <a href="#">Bruce Wayne</a>
-                                <span>created an access request for</span>
-                                <a href="#">HR Application</a>
-                              </p>
-                            </div>
-                          </div>
-
-                        </article>
-
-
-                        <article class="timeline-entry begin">
-
-                          <div class="timeline-entry-inner">
-
-                            <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
-                              <i class="entypo-flight"></i>
-                            </div>
-
-                          </div>
-
-                        </article>
+                        <div class="timeline-label">
+                          <h2>
+                            Request status changed to
+                            <a href="">Approved</a>
+                          </h2>
+                          <p>
+                            <a href="#">Alfred Pennywoth</a>
+                            <span>Approved the Request</span>
+                          </p>
+                        </div>
 
                       </div>
-                    </div>
+
+                    </article>
+
+                    <article class="timeline-entry left-aligned">
+
+                      <div class="timeline-entry-inner">
+                        <time class="timeline-time" datetime="2014-01-10T03:45">
+                          <span>08:45 AM</span>
+                          <span>Today</span>
+                        </time>
+
+                        <div class="timeline-icon bg-primary">
+                          <i class="entypo-camera"></i>
+                        </div>
+
+                        <div class="timeline-label">
+                          <h2>
+                            Request Created
+                          </h2>
+                          <p>
+                            <a href="#">Bruce Wayne</a>
+                            <span>created an access request for</span>
+                            <a href="#">HR Application</a>
+                          </p>
+                        </div>
+                      </div>
+
+                    </article>
+
+                    <article class="timeline-entry begin">
+
+                      <div class="timeline-entry-inner">
+
+                        <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
+                          <i class="entypo-flight"></i>
+                        </div>
+
+                      </div>
+
+                    </article>
+
                   </div>
+
+
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="DynamicTimeLine" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content card">
+            <div class="modal-header card-header card-header-danger">
+
+              <h4 class="card-title">Request Details</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body card-body">
+              <p class="card-category">Timeline</p>
+              <div class="timeline-centered" id="timelineStart">
               </div>
             </div>
           </div>
@@ -534,6 +547,7 @@
   <script src="../node_modules/toastr/build/toastr.min.js"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  <script src="../assets/js/plugins/moment.js"></script>
   <script src="../assets/demo/functions-user.js"></script>
 </body>
 

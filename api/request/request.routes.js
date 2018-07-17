@@ -22,7 +22,7 @@ router.get('/all/:filter', (req, res) => {
 router.get('/:id', (req, res) => {
     RequestController.get(req.params.id).then((data) => {
         res.setHeader('Content-Type', 'application/json');
-        res.status(data.status).send(data.Request);
+        res.status(data.status).send(JSON.stringify(data.message));
     })
 })
 

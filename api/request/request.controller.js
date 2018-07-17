@@ -47,7 +47,7 @@ function Controller() {
         return new Promise((resolve, reject) => {
             RequestSchema.findOne({
                 requestId: id
-            }).populate('user').populate('manager').populate('application').populate('department').exec().then((data) => {
+            }).populate('user').populate('manager').populate('application').populate('department').populate('actions').exec().then((data) => {
                 console.log((data));
                 resolve({
                     status: 200,
