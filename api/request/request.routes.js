@@ -66,6 +66,8 @@ router.put('/:id', (req, res) => {
     console.log(req.body);
     var newRequestAction;
     var userId;
+    var actionComment = req.body.comment;
+
     RequestController.update(req.body).then((data) => {
 
         RequestController.get(req.params.id).then((updatedData) => {
@@ -82,6 +84,12 @@ router.put('/:id', (req, res) => {
                 'Status: <strong>' + updatedData.message.state + '</strong><br/>' +
                 'Please <a href="https://mat-dash.herokuapp.com/">log in</a> to the application to see the details';
 
+            if (actionComment != null) {
+                body = body + "<br/>" +
+                    "<h3>Additional Comments</h3>" +
+                    actionComment;
+            }
+
             if (updatedData.message.state == "COMPLETED") {
                 userId = "it.service";
                 Util.sendMail(subject, body, updatedData.message.manager.email)
@@ -94,12 +102,6 @@ router.put('/:id', (req, res) => {
             else if (updatedData.message.state == "CLOSED") {
                 userId = "it.service";
                 Util.sendMail(subject, body, updatedData.message.manager.email)
-            }
-
-            if (data.comment != null) {
-                body = body + "<br/>" +
-                    "<h3>Additional Comments</h3>" +
-                    data.comment;
             }
 
             Util.sendMail(subject, body, updatedData.message.user.email)
@@ -121,14 +123,14 @@ router.put('/:id', (req, res) => {
                 Util.sendMail(subject, body, 'noyek.it@gmail.com');
 
             }
-            else if(updatedData.message.state == "REJECTED") {
+            else if (updatedData.message.state == "REJECTED") {
                 userId = updatedData.message.manager.userId;
             }
 
             newRequestAction = {
                 requestId: updatedData.message.requestId,
                 action: "Request status changed to " + updatedData.message.state,
-                comment: data.comment,
+                comment: actionComment,
                 userId: userId
             }
 

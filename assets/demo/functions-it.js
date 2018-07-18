@@ -51,15 +51,16 @@ $(document).ready(function () {
     $('#btnCompleteRequest').on('click', function (e) {
         e.preventDefault();
 
+        var comment = $('#completeComment').val();
+
         var data = {
             state: "COMPLETED",
-            requestId: requestId
+            requestId: requestId,
+            comment: comment
         }
 
         var dataObj = JSON.stringify(data);
         var urlAjax = "/api/request/" + requestId;
-
-        console.log(requestId);
 
         $.ajax({
             type: "PUT",
@@ -91,9 +92,12 @@ $(document).ready(function () {
     $('#btnCloseRequest').on('click', function (e) {
         e.preventDefault();
 
+        var comment = $('#closeComment').val();
+
         var data = {
             state: "CLOSED",
-            requestId: requestId
+            requestId: requestId,
+            comment: comment
         }
 
         var dataObj = JSON.stringify(data);

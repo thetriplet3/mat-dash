@@ -53,15 +53,16 @@ $(document).ready(function () {
     $('#btnApproveRequest').on('click', function (e) {
         e.preventDefault();
 
+        var comment = $('#approveComment').val();
+
         var data = {
             state : "APPROVED",
-            requestId: requestId
+            requestId: requestId,
+            comment: comment
         }
 
         var dataObj = JSON.stringify(data);
         var urlAjax = "/api/request/" + requestId;
-
-        console.log(requestId);
 
         $.ajax({
             type: "PUT",
@@ -93,9 +94,12 @@ $(document).ready(function () {
     $('#btnRejectRequest').on('click', function (e) {
         e.preventDefault();
 
+        var comment = $('#rejectComment').val();
+
         var data = {
             state : "REJECTED",
-            requestId: requestId
+            requestId: requestId,
+            comment: comment
         }
 
         var dataObj = JSON.stringify(data);
